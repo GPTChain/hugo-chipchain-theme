@@ -1,0 +1,33 @@
+{{$page := .root}}
+{{$title := .page.Title}}
+{{$content := .page.Content}}
+{{$params := .page.Params.cc_features}}
+
+<div class="cc-features">
+  <div class="cc-features-container {{if $params.flip}}{{ printf "flip" }}{{end}}">
+    {{if isset $params "image"}}
+    <div class="cc-features-img">
+      {{$image := partial "functions/get_media_image" $params.image}}
+      <img src="{{ $image.RelPermalink }}" alt="{{.}}">
+    </div>
+    {{end}}
+    <div>
+      <h2 class="cc-features-title">{{$title | markdownify | emojify | safeHTML}}</h2>
+      <div class="cc-features-content">{{$content | markdownify | emojify | safeHTML}}</div>
+    </div>
+  </div>
+  <div class="cc-features-items">
+    {{range $params.items}}
+    <div class="cc-features-item">
+      {{if isset . "icon"}}
+        {{ $iconClz := partial "functions/get_icon_classes" (dict "icon" .icon "pack" .icon_pack) }}
+        <i class="{{ $iconClz }} mr-1" aria-hidden="true"></i>
+      {{end}}
+      <h2>{{.label | markdownify | emojify | safeHTML}}</h2>
+      {{if isset . "description"}}
+        <div>{{.description | markdownify | emojify | safeHTML}}</div>
+      {{end}}
+    </div>
+    {{end}}
+  </div>
+</div>

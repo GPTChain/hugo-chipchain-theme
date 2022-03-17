@@ -1,0 +1,141 @@
+
+.cc-features {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+
+  .cc-features-container {
+    display: flex;
+    flex-direction: row;
+
+    &.flip {
+      flex-direction: row-reverse;
+    }
+
+    justify-content: center;
+    align-items: stretch;
+  }
+
+  .cc-features-items {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: stretch;
+  }
+}
+
+// ----------------------------------------------
+
+.cc-features-container {
+  margin-bottom: 1rem;
+
+  & > div {
+    padding: 0.5rem 2.5rem;
+  }
+
+  .cc-features-img {
+    min-width: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    img {
+      width: 100%;
+    }
+  }
+
+  .cc-features-title {
+    text-align: center;
+    font-size: 1.7rem;
+    font-weight: bolder;
+    line-height: 1.5;
+    margin-bottom: 16px;
+  }
+
+  .cc-features-title:after {
+    content: "";
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+    height: 0.3rem;
+    width: 3rem;
+    border-radius: 0.15rem;
+    background-color: var(--primary-color);
+  }
+
+  .cc-features-content {
+    font-size: 0.8rem;
+    font-weight: normal;
+    text-align: start;
+  }
+}
+
+.cc-features-item {
+  background-color: var(--primary-color);
+  flex: 1;
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin: 0 0.5rem;
+
+  transition: 100ms ease-in-out box-shadow;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+
+  &:hover {
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.4);
+  }
+
+  & * {
+    color: white;
+  }
+
+  & > i {
+    font-size: 1.5rem;
+  }
+
+  & > h2 {
+    font-size: 1.25rem;
+    font-weight: bold;
+  }
+
+  & > div {
+    font-size: 0.8rem;
+  }
+}
+
+// ---------------------------------------------
+
+// for mobile
+.cc-features {
+  @include media-breakpoint-down(md) {
+    .cc-features-container, .cc-features-items {
+      flex-direction: column !important;
+    }
+    .cc-features-img {
+      min-width: unset !important;
+      width: 100%;
+      img {
+        width: 60%;
+      }
+    }
+    .cc-features-item {
+      width: 100%;
+      margin: 0.5rem 0;
+    }
+    .cc-features-container {
+      & > div {
+        padding: 0.5rem 0.5rem !important;
+      }
+    }
+  }
+}
+
+// -------------------------------------------------
+
+// color
+.cc-features-content {
+  color: rgba(0, 0, 0, 0.6) !important;
+}
+
+.dark .cc-features-content {
+  color: rgba(255, 255, 255, 0.6) !important;
+}
